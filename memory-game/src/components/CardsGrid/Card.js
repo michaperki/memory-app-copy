@@ -18,7 +18,6 @@ const CardWrapper = styled.div`
   margin: 5px;
   padding: 5px;
   align-items: center;
-  justify-content: center;
   border: 1px solid black;
 
   img {

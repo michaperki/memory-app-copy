@@ -30,12 +30,16 @@ const Main = () => {
     return characters;
   };
 
-  console.log(characters);
+  const handleCardClick = (e) => {
+    const characterName = e.target.parentNode.lastChild.textContent;
+    console.log(characterName);
+    setCharacters(shuffleArray(characters))
+  }
 
   return (
     <>
       <Scoreboard score={2} bestScore={3} />
-      <CardsGrid characters={characters} />
+      <CardsGrid characters={characters} handleCardClick={handleCardClick}/>
     </>
   );
 };
