@@ -3,7 +3,7 @@ import React from "react";
 const Card = ({ character, handleCardClick }) => {
   return (
     <div onClick={handleCardClick}>
-      <image src={character.image} alt={pokemon.name} />
+      <img src={character.image} alt={character.name} />
       <p>{character.name}</p>
     </div>
   );
