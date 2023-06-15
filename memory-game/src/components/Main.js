@@ -4,7 +4,7 @@ import CardsGrid from "./CardsGrid";
 import Scoreboard from "./Scoreboard";
 import { getCharacter } from "rickmortyapi";
 import { shuffleArray } from "../utils";
-
+import background from '../assets/background.jpg';
 
 const Main = () => {
   const CHARACTER_NUM = 12;
@@ -72,6 +72,9 @@ const MainWrapper = styled.main`
   gap: 4rem;
   padding: 4rem;
   margin-bottom: 3.5rem;
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export default Main;
