@@ -1,12 +1,11 @@
 import { capitalizeFirstLetter, shuffleArray } from "./utils";
-import Main from './components/Main';
+import Main from "./components/Main";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        Memory Game
-      </header>
+      <Header />
       <Main />
     </div>
   );

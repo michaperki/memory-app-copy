@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import styled from "styled-components";
 import CardsGrid from "./CardsGrid";
 import Scoreboard from "./Scoreboard";
 import { getCharacter } from "rickmortyapi";
 import { shuffleArray } from "../utils";
+
 
 const Main = () => {
   const CHARACTER_NUM = 12;
@@ -24,11 +26,8 @@ const Main = () => {
 
     for (let i = 1; i <= number; i++) {
       const character = await getCharacter(i);
-      const image = character.data.image;
-      const name = character.data.name;
-      const charObj = { name, image };
-
-      characters.push(charObj);
+      const { image, name } = character.data;
+      characters.push({ name, image });
     }
     return characters;
   };
@@ -58,11 +57,21 @@ const Main = () => {
   };
 
   return (
-    <>
+    <MainWrapper>
       <Scoreboard score={currentScore} bestScore={bestScore} />
       <CardsGrid characters={characters} handleCardClick={handleCardClick} />
-    </>
+    </MainWrapper>
   );
 };
+
+const MainWrapper = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  padding: 4rem;
+  margin-bottom: 3.5rem;
+`;
 
 export default Main;
