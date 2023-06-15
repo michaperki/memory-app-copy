@@ -1,17 +1,35 @@
+import { useEffect, useState } from "react";
 import CardsGrid from "./CardsGrid";
 import Scoreboard from "./Scoreboard";
+import { getCharacter } from "rickmortyapi";
+import { shuffleArray } from "../utils";
 
 const Main = () => {
-  const Rick = {
-    name: "Rick",
-    image: "https://upload.wikimedia.org/wikipedia/en/a/a6/Rick_Sanchez.png",
+    const [characters, setCharacters] = useState([])
+
+    useEffect(()=>{
+        const loadCards = async ()=>{
+            setCharacters(shuffleArray(await fetchCharacters(3)))
+        }
+
+        loadCards()
+    }, [])
+
+  const fetchCharacters = async (number) => {
+    const characters = [];
+
+    for (let i = 1; i <= number; i++) {
+      const character = await getCharacter(i);
+      const image = character.data.image;
+      const name = character.data.name;
+      const charObj = {name, image};
+
+      characters.push(charObj)
+    }
+    return characters;
   };
-  const Morty = {
-    name: "Morty",
-    image:
-      "https://sketchok.com/images/articles/01-cartoons/007-rick-and-morty/07/11.jpg",
-  };
-  const characters = [Rick, Morty];
+
+  console.log(characters)
 
   return (
     <>
