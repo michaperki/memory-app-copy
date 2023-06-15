@@ -1,3 +1,5 @@
+import { capitalizeFirstLetter, shuffleArray } from "./utils";
+
 function App() {
   return (
     <div className="App">
