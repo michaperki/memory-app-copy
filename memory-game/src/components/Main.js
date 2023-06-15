@@ -5,15 +5,16 @@ import { getCharacter } from "rickmortyapi";
 import { shuffleArray } from "../utils";
 
 const Main = () => {
-    const [characters, setCharacters] = useState([])
+  const CHARACTER_NUM = 12;
+  const [characters, setCharacters] = useState([]);
 
-    useEffect(()=>{
-        const loadCards = async ()=>{
-            setCharacters(shuffleArray(await fetchCharacters(3)))
-        }
+  useEffect(() => {
+    const loadCards = async () => {
+      setCharacters(shuffleArray(await fetchCharacters(CHARACTER_NUM)));
+    };
 
-        loadCards()
-    }, [])
+    loadCards();
+  }, []);
 
   const fetchCharacters = async (number) => {
     const characters = [];
@@ -22,14 +23,14 @@ const Main = () => {
       const character = await getCharacter(i);
       const image = character.data.image;
       const name = character.data.name;
-      const charObj = {name, image};
+      const charObj = { name, image };
 
-      characters.push(charObj)
+      characters.push(charObj);
     }
     return characters;
   };
 
-  console.log(characters)
+  console.log(characters);
 
   return (
     <>
